@@ -47,7 +47,6 @@ public class EmployeeController {
     public String addNewEmployee(Model model) {
         Employee employee = new Employee();
         Long id = generateSequence(Employee.SEQUENCE_NAME);
-        System.out.println("new id -" + id);
         employee.setId(id);
         model.addAttribute("employee", employee);
         return "newemployee";
@@ -55,7 +54,6 @@ public class EmployeeController {
 
     @PostMapping("/save")
     public String saveEmployee(@ModelAttribute("employee") Employee employee) {
-        System.out.println("Save employee - " + employee.getId());
         employeeService.save(employee);
         return "redirect:/";
     }
